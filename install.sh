@@ -123,8 +123,8 @@ if wtMsg "Package Updater" "Would you like to update your package database and u
   # Use apt-get to update the package database
   wtMsg "$defaultTitle" "Updating package database... Please wait." "infobox"
   echo "## Update packages" >> $installerLog
-  sudo apt-get update && sudo apt-get upgrade 2>&1 | tee $tmpLog | tee -a $installerLog 
   sudo rpi-eeprom-update -a
+  sudo apt-get update && sudo apt-get upgrade 2>&1 | tee $tmpLog | tee -a $installerLog 
   # Check if there were any errors during the update
   if grep -q "E:" $tmpLog 2>&1; then
     wtColors red
