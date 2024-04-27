@@ -144,9 +144,10 @@ packages=$(whiptail --backtitle="$topLeftTitle" --title "Package Installation"  
     "Select packages to install. Packages selected by default are needed." $menuHeight $width 7 \
     "gldriver-test" "OpenGL drivers on rpi5" ON \
     "vim" "programmer's text editor" ON \
+    "vim" "xorgr" ON \
     "xserver-xorg" "X Window System display server" OFF \
     "x11-xserver-utils" "utilities for xserver" OFF \
-    "xinit" "X Window System initializer" OFF \
+    "xinit" "X Window System initializer" ON \
     "xdotool" "command-line X11 automation tool" ON \
     "zsh" "Z shell" ON \
     "zsh-autosuggestions" "autosuggestions for zsh" ON \
@@ -423,6 +424,7 @@ fi
 
 confFiles="\
 sudo ln -sf $installPath/config/motd /etc/motd
+ln -sf $installPath/config/xinitrc $HOME/.xinitrc
 ln -sf $installPath/config/zshrc $HOME/.zshrc
 ln -sf $installPath/config/zprofile $HOME/.zprofile
 ln -sf $installPath/config/Xresources $HOME/.Xresources
