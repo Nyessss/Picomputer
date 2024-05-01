@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 
 # apt install python3-pip
-# pip3 install adafruit_ads1x15
 
-import Adafruit_ADS1x15
 import subprocess
+#from subprocess import call
 import os
 import time
+import smbus
+import struct
+import gpiod
+
 
 # Choose a gain of 1 for reading voltages from 0 to 4.09V.
 #  –   1 = +/-4.096V
@@ -28,11 +31,37 @@ def cancelShutdown(msg):
     notification = f'dunstify -t 1500 -h {dunstTag} "{msg}" "Shutdown canceled."'
     subprocess.call(notification, shell=True)
 
+def readVoltage(bus):
+
+     address = 0x36
+     read = bus.read_word_data(address, 2)
+     swapped = struct.unpack("<H", struct.pack(">H", read))[0]
+     voltage = swapped * 1.25 /1000/16
+     return voltage
+
+
+def readCapacity(bus):
+
+     address = 0x36
+     read = bus.read_word_data(address, 4)
+     swapped = struct.unpack("<H", struct.pack(">H", read))[0]
+     capacity = swapped/256
+     return capacity
+
+
+bus = smbus.SMBus(1)
+
+PLD_PIN = 6
+chip = gpiod.Chip('gpiochip4')
+pld_line = chip.get_line(PLD_PIN)
+pld_line.request(consumer="PLD", type=gpiod.LINE_REQ_DIR_IN)
+
 while True:
-    adc = Adafruit_ADS1x15.ADS1015()
-    adc0 = adc.read_adc(0, gain=1) # battery value
-    adc1 = adc.read_adc(1) # is it plug to AC?
-    level = round((adc0-1599)/4.48) # battery percentage
+    #adc = Adafruit_ADS1x15.ADS1015()
+    #adc0 = readCapacity(bus) # battery value
+    adc1 = pl   d_line.get_value() # is it plug to AC?
+    #level = round((adc0-1599)/4.48) # battery percentage
+    level = round(readCapacity(bus))
 
     dunstTag = 'string:x-dunst-stack-tag:battery'
 
@@ -45,7 +74,7 @@ while True:
     if os.path.isfile(sched_file) and warn_wall == 0:
         shutdown_sched = 1
 
-    if adc1 < 1024: # picomputer is not plugged to AC
+    if adc1 != 1: # picomputer is not plugged to AC
  
         nicOn = round((level + 5) / 100 * barWidth)
         if nicOn < 0:nicOn = 0

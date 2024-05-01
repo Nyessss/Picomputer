@@ -143,18 +143,22 @@ fi
 packages=$(whiptail --backtitle="$topLeftTitle" --title "Package Installation"  --ok-button "Install"  --checklist \
     "Select packages to install. Packages selected by default are needed." $menuHeight $width 7 \
     "gldriver-test" "OpenGL drivers on rpi5" ON \
+    "gpiod" "gpiod" ON \
+    "alsa-utils" "alsa-utils" ON \
     "vim" "programmer's text editor" ON \
-    "vim" "xorgr" ON \
-    "xserver-xorg" "X Window System display server" OFF \
-    "x11-xserver-utils" "utilities for xserver" OFF \
+    "chromium-browser" "chromium-browser " ON \
+    "python3-smbus" "python3-smbus" ON \
+    "i2c-tools" "i2ctools" ON \
+    "xserver-xorg" "X Window System display server" ON \
+    "x11-xserver-utils" "utilities for xserver" ON \
     "xinit" "X Window System initializer" ON \
     "xdotool" "command-line X11 automation tool" ON \
     "zsh" "Z shell" ON \
     "zsh-autosuggestions" "autosuggestions for zsh" ON \
     "zsh-syntax-highlighting" "syntax color highlighting for zsh" ON \
     "xclip" "clipboard" ON \
-    "xss-lock" "use external locker as X screen saver" OFF \
-    "python3-pip" "package manager for Python packages" OFF \
+    "xss-lock" "use external locker as X screen saver" ON \
+    "python3-pip" "package manager for Python packages" ON \
     "rxvt-unicode" "terminal emulator" ON \
     "i3" "tiling window manager" ON \
     "polybar" "status bars" ON \
@@ -164,15 +168,15 @@ packages=$(whiptail --backtitle="$topLeftTitle" --title "Package Installation"  
     "scrot" "screen capture utility" ON \
     "feh" "image viewer" ON \
     "pulseaudio" "sound server system" ON \
-    "pulseaudio-module-bluetooth" "enables audio bluetooth devices" OFF \
-    "moc" "console audio player" OFF \
-    "cava" "console audio visualizer" OFF \
-    "qalc" "console calculator" OFF \
-    "lynx" "console browser" OFF \
-    "tty-clock" "console digital clock" OFF \
-    "cmatrix" "scrolling Matrix like screen" OFF \
-    "mpv" "light media player" OFF \
-    "moon-buggy" "console game, a buggy on the moon" OFF \
+    "pulseaudio-module-bluetooth" "enables audio bluetooth devices" ON \
+    "moc" "console audio player" ON \
+    "cava" "console audio visualizer" ON \
+    "qalc" "console calculator" ON \
+    "lynx" "console browser" ON \
+    "tty-clock" "console digital clock" ON \
+    "cmatrix" "scrolling Matrix like screen" ON \
+    "mpv" "light media player" ON \
+    "moon-buggy" "console game, a buggy on the moon" ON \
     3>&1 1>&2 2>&3)
 
 fail=false

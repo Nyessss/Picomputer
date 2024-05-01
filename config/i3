@@ -44,8 +44,8 @@ bindsym $mod+shift+Escape exec $scriptsDir/lockscreen.sh
 
 
 # Scratchpad
-bindsym $mod+shift+m scratchpad show
-bindsym $mod+m move scratchpad
+#bindsym $mod+shift+m scratchpad show
+#bindsym $mod+m move scratchpad
 
 # Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id $scriptsDir/volume.sh 10%+ 
@@ -89,6 +89,7 @@ bindsym $mod+Return exec urxvt
 # start apps
 bindsym $mod+n exec exec urxvt -e ranger &
 bindsym $mod+Shift+w exec urxvt -e $scriptsDir/wifictl.sh &
+bindsym $mod+Shift+x exec urxvt -e $scriptsDir/wifictl2.sh &
 
 # kill focused window
 bindsym $mod+q kill
@@ -114,10 +115,10 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+m focus right
 
 # move focused window
 bindsym $mod+Shift+Left move left
@@ -125,10 +126,10 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+m move right
 
 # split toggle orientation
 bindsym $mod+v split toggle
@@ -231,15 +232,15 @@ mode "RESIZE ↘"{
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym m resize grow width 10 px or 10 ppt
 
-        bindsym shift+h resize shrink width 20 px or 20 ppt
-        bindsym shift+j resize grow height 20 px or 20 ppt
-        bindsym shift+k resize shrink height 20 px or 20 ppt
-        bindsym shift+l resize grow width 20 px or 20 ppt
+        bindsym shift+j resize shrink width 20 px or 20 ppt
+        bindsym shift+k resize grow height 20 px or 20 ppt
+        bindsym shift+l resize shrink height 20 px or 20 ppt
+        bindsym shift+m resize grow width 20 px or 20 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -280,4 +281,4 @@ exec_always --no-startup-id $scriptsDir/xbanish &
 exec_always --no-startup-id sudo chown $USER /sys/class/leds/input0::capslock/brightness
 
 # Start Apps 
-exec_always --no-startup-id urxvt -e tty-clock -cs -C 2
+#exec_always --no-startup-id urxvt -e tty-clock -cs -C 2
