@@ -61,15 +61,15 @@ via SSH
 bluetoothctl for mouse and keyboard
 clone SD to Nvme
 
-  
+au reboot 
+cd picomputer-local ./install.sh
+ et sudo raspi-config avec rpi-eeprom à jour, boot order sd-nvme-usb et console autologin
+
 ## X1202 
 git clone https://github.com/suptronics/x120x.git
 sudo i2cdetect -y 1
 
-to run ~/x120x $  sudo python3 bat.py 
+to run ~/x120x $  sudo python3 batt.py avec power loss detection ok via gpiod ?
 to edit  safe shutown (cf. code Q avec notifications) defaut <3.20V> voltage range must be 3.00 to 4.10V.
-sudo nano bat.py 
 
-power loss detection (cf. Code Q battery.py) 
-sudo python3 pld.py
 

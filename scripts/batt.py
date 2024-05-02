@@ -59,7 +59,7 @@ pld_line.request(consumer="PLD", type=gpiod.LINE_REQ_DIR_IN)
 while True:
     #adc = Adafruit_ADS1x15.ADS1015()
     #adc0 = readCapacity(bus) # battery value
-    adc1 = pl   d_line.get_value() # is it plug to AC?
+    adc1 = pld_line.get_value() # is it plug to AC?
     #level = round((adc0-1599)/4.48) # battery percentage
     level = round(readCapacity(bus))
 
