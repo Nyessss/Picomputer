@@ -48,9 +48,10 @@ font-0 = ${fonts.font0}
 font-1 = ${fonts.font1}
 font-2 = ${fonts.font2}
 
-modules-left = i3 memory
-modules-center = xwindow temperature
-modules-right = wlan pulseaudio pibattery time
+modules-left = i3 memory temperature
+modules-center = xwindow
+modules-right = wlan pulseaudio time
+#modules-right = wlan pulseaudio pibattery time
 
 
 ;  _ __ ___   ___   __| |_   _| | ___  ___
@@ -128,7 +129,7 @@ format-foreground = ${colors.dark}
 
 [module/pibattery]
 type = custom/script
-exec = ~/.picomputer/scripts/battery.py
+exec = ~/.picomputer/scripts/batt.py
 tail = true
 format-padding = 1
 label-minlen = 13
@@ -158,7 +159,7 @@ type = internal/temperature
 
 ; Seconds to sleep between updates
 ; Default: 1
-interval = 0.5
+interval = 1
 
 ; Thermal zone to use
 ; To list all the zone types, run 

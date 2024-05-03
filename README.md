@@ -23,13 +23,8 @@ Argon THRML 200mm active cooler
 
 ## Rpi imager 
 Raspberry pi imager - Bookworm 64 bits desktop Lite
-    First boot and reboot
-SSH
-sudo raspi-config
-  activate : I2C, BOOT ORDER.
 
 ## Eeprom update, enable PCIe connector - setup.sh
-
 sudo apt update
 sudo apt upgrade
 rpi-eeprom-update -a
@@ -41,35 +36,22 @@ POWER_OFF_ON_HALT=1
 BOOT_ORDER=0xf416
 PSU_MAX_CURRENT=5000
 
-sudo nano /boot/firmware/config.txt
-  & add lines:
-
-dtparam=pciex1
-dtparam=nvme
-dtparam=pciex1_gen=3
-
-reboot
-sudo lspci
-vcgencmd bootloader_version
-
 (the bit 6 at end force NVMe boot or check in sudo raspi-config, advanced fuctions, boot order.)
 
 ## SETTING UP
 via SSH
-  bash -c "$(curl https://raw.githubusercontent.com/Nyessss/picomputer/main/setup.sh)"
-
-bluetoothctl for mouse and keyboard
-clone SD to Nvme
+  sudo bash -c "$(curl https://raw.githubusercontent.com/Nyessss/picomputer/main/setup.sh)
 
 au reboot 
-cd picomputer-local ./install.sh
- et sudo raspi-config avec rpi-eeprom à jour, boot order sd-nvme-usb et console autologin
+
+bash ~/picomputer-main/install.sh
 
 ## X1202 
 git clone https://github.com/suptronics/x120x.git
 sudo i2cdetect -y 1
 
+##
 to run ~/x120x $  sudo python3 batt.py avec power loss detection ok via gpiod ?
-to edit  safe shutown (cf. code Q avec notifications) defaut <3.20V> voltage range must be 3.00 to 4.10V.
+to edit  safe shutown (cf. code Q avec notifications) defaut <3.20V> voltage range must be 3.00 to 4.10V. et dunst
 
 

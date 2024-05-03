@@ -147,7 +147,7 @@ packages=$(whiptail --backtitle="$topLeftTitle" --title "Package Installation"  
     "alsa-utils" "alsa-utils" ON \
     "vim" "programmer's text editor" ON \
     "chromium-browser" "chromium-browser " ON \
-    "python3-smbus" "python3-smbus" ON \
+    "python3-smbus" "python3-smbus" OFF \
     "i2c-tools" "i2ctools" ON \
     "xserver-xorg" "X Window System display server" ON \
     "x11-xserver-utils" "utilities for xserver" ON \
